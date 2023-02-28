@@ -1,14 +1,14 @@
 import Navbar from "./components/Navbar"
 import Meme from "./components/Meme"
-import Login from "./components/Login"
-import Register from "./components/Register"
+
+import Home from "./components/Home";
 function App() {
   return (
     <div className="App">
         <Navbar />
+        <Home />
         <Meme />
-        <Login />
-        <Register />
+       
    </div>
   );
 }
