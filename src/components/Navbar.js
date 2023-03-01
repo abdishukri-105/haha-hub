@@ -2,7 +2,8 @@ const Navbar = () => {
 
     
     return ( 
-        <nav className="bg-teal-500 flex items-center justify-between flex-wrap p-3">
+        
+        <nav className="bg-green-500 flex items-center justify-between flex-wrap p-3">
         <div className="flex items-center flex-shrink-0 text-gray-800 mr-6">
           <span className="font-semibold text-2xl tracking-tight">Haha hub</span>
         </div>
