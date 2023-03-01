@@ -1,5 +1,5 @@
 import { Routes , Route, useNavigate} from 'react-router-dom'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from "./Navbar"
 import Home from "./Home"
 import Mymeme from "./Mymemes"
@@ -8,24 +8,10 @@ import Allmemes from './Allmemes'
 import Mymemes from './Mymemes'
 
 function App() {
-  // const [searchInput, setSearchInput] = useState('');
-  // const [results, setResults] = useState([]);
-  // const [shelf, setShelf] = useState([]);
-  
-  // const [isLoading, setIsLoading] = useState(false);
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   if(searchInput === '') return;
-  //   const response = await fetch(
-  //     `https://www.googleapis.com/books/v1/volumes?q=books+${searchInput}&key=AIzaSyAbr_mnO88bXbeseUjO5aX1L2xXQCoVr_c`
-  //   );
-  //   const data = await response.json();
-  //   setResults(data.items);
-  // }
-
-  
+  const [memes, setMemes] = useState([])
+  const [myMemes, setMyMemes] = useState([])
   
   const navigate = useNavigate()
 
@@ -34,6 +20,28 @@ function App() {
     setIsAuthenticated(false)
     navigate('/')
   }
+
+  // fetch all memes
+    useEffect(() => {
+      fetch("http://localhost:9292/memes")
+        .then((r) => r.json())
+        .then((Memes) => setMemes(Memes));
+    }, []);
+
+//  fetch memes of specific user
+    useEffect(() => {
+      fetch("http://localhost:9292/users/1")
+        .then((r) => r.json())
+        .then((myMemes) => setMyMemes(myMemes));
+    }, []);
+
+
+  function handleDeleteMessage(id) {
+    const updatedmemes = myMemes.filter((myMemes) => myMemes.id !== id);
+    console.log("update delete message")
+    setMyMemes(updatedmemes);
+  }
+
 
 
 
@@ -48,8 +56,8 @@ function App() {
            {isAuthenticated && (
             <>
               <Route path="/shelf" element={<Mymeme />} />
-              <Route path="/allmemes" element={<Allmemes />} />
-              <Route path="/mymemes" element={<Mymemes />} />
+              <Route path="/allmemes" element={<Allmemes memes={memes}/>} />
+              <Route path="/mymemes" element={<Mymemes myMemes={myMemes} handleDeleteMessage={handleDeleteMessage}/>} />
               {/* <Route path="/search" element={<Search results={results} searchInput={searchInput} setSearchInput={setSearchInput} handleSubmit={handleSubmit} isLoading = {isLoading} addToShelf={addToShelf}/>} /> */}
             </>
            )}
