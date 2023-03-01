@@ -1,6 +1,6 @@
 const Addmeme = () => {
     return (  
-      <div className="mr-20 mt-8">
+      <div className="mr-10 mt-8">
          
          <form className="max-w-sm mx-auto mt-4 bg-slate-500 rounded-xl p-6  " >
          <h1 className="text-gray-900 text-2xl font-bold text-center pb-6">Add meme</h1>
