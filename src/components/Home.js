@@ -9,7 +9,7 @@ const Home = ({setIsAuthenticated}) => {
 
     const handleSubmit=(e)=>{
         e.preventDefault()
-        navigate('/all-memes')
+        navigate('/allmemes')
        console.log("go to home now")
        setIsAuthenticated(true)
     }
@@ -17,7 +17,7 @@ const Home = ({setIsAuthenticated}) => {
     return ( 
       <div>
   
-        <div className=" bg-cover bg-center flex flex-col justify-center items-center text-white" >
+        <div className=" bg-cover bg-center flex flex-col justify-cente items-center text-white"  >
           <Login handleSubmit={handleSubmit} />
         </div>
 

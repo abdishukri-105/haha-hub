@@ -37,7 +37,7 @@ const Login = ({handleSubmit}) => {
         </div>
          <div className="text-gray-900 pl-10 block">Dont have account? 
            <Link to="/register">
-              <button className="shadow ml-8 bg-green-700 hover:bg-green-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">sign up</button> 
+              <button className="shadow ml-8 bg-green-700 hover:bg-green-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">Register</button> 
            </Link>
          </div>
       </form>

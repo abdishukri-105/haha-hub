@@ -1,11 +1,11 @@
 import { Routes , Route, useNavigate} from 'react-router-dom'
-import React, { useState } from 'react';
-
-
+import React, { useState } from 'react'
 import Navbar from "./Navbar"
 import Home from "./Home"
-import Meme from "./Meme"
+import Mymeme from "./Mymemes"
 import Register from './Register'
+import Allmemes from './Allmemes'
+import Mymemes from './Mymemes'
 
 function App() {
   // const [searchInput, setSearchInput] = useState('');
@@ -38,7 +38,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="bg-slate-600 h-screen">
       
         <Navbar isAuthenticated={isAuthenticated} handleLogout={handleLogout}  />
         
@@ -47,7 +47,9 @@ function App() {
            <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated}  />} />
            {isAuthenticated && (
             <>
-              <Route path="/shelf" element={<Meme />} />
+              <Route path="/shelf" element={<Mymeme />} />
+              <Route path="/allmemes" element={<Allmemes />} />
+              <Route path="/mymemes" element={<Mymemes />} />
               {/* <Route path="/search" element={<Search results={results} searchInput={searchInput} setSearchInput={setSearchInput} handleSubmit={handleSubmit} isLoading = {isLoading} addToShelf={addToShelf}/>} /> */}
             </>
            )}
