@@ -36,14 +36,26 @@ function App() {
     }, []);
 
 
-  function handleDeleteMessage(id) {
+  function handleDeleteMemes(id) {
     const updatedmemes = myMemes.filter((myMemes) => myMemes.id !== id);
     console.log("update delete message")
     setMyMemes(updatedmemes);
   }
 
+  function handleAddMemes(newMyMemes) {
+    setMyMemes([...myMemes, newMyMemes]);
+  }
 
-
+  function handleUpdateMeme(updatedMemeObj) {
+    const updatedMemes = Mymemes.map((message) => {
+      if (message.id === updatedMemeObj.id) {
+        return updatedMemeObj;
+      } else {
+        return message;
+      }
+    });
+    setMyMemes(updatedMemes);
+  }
 
   return (
     <div className="bg-slate-600 h-screen">
@@ -57,7 +69,11 @@ function App() {
             <>
               <Route path="/shelf" element={<Mymeme />} />
               <Route path="/allmemes" element={<Allmemes memes={memes}/>} />
-              <Route path="/mymemes" element={<Mymemes myMemes={myMemes} handleDeleteMessage={handleDeleteMessage}/>} />
+              <Route path="/mymemes" element={<Mymemes myMemes={myMemes} 
+                                                handleDeleteMemes={handleDeleteMemes}
+                                                handleAddMemes={handleAddMemes} 
+                                                handleUpdateMeme={handleUpdateMeme}
+              />} />
               {/* <Route path="/search" element={<Search results={results} searchInput={searchInput} setSearchInput={setSearchInput} handleSubmit={handleSubmit} isLoading = {isLoading} addToShelf={addToShelf}/>} /> */}
             </>
            )}

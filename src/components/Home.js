@@ -1,8 +1,7 @@
 import Login from "./Login"
-import Register from "./Register"
+
 import { useNavigate} from "react-router-dom"
 
-import joker from "../images/joker.jpg"
 const Home = ({setIsAuthenticated}) => {
 
     const navigate = useNavigate()

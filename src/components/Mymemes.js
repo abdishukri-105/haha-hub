@@ -1,8 +1,14 @@
 import Addmeme from "./Addmeme";
 import Delete from "./Delete";
+import { useState } from "react";
 
+const Mymeme = ({myMemes, handleDeleteMessage, handleAddMemes, handleUpdateMeme}) => {
+  const [isEditing, setIsEditing] = useState(false)
 
-const Mymeme = ({myMemes, handleDeleteMessage}) => {
+  function handleUpdateMessage(updatedMeme) {
+    setIsEditing(false);
+    handleUpdateMeme(updatedMeme);
+  }
 
 
   const allMemes = myMemes.map(meme => {
@@ -19,7 +25,7 @@ const Mymeme = ({myMemes, handleDeleteMessage}) => {
        <div className=" ">
          {allMemes}
        </div>
-         <Addmeme />
+         <Addmeme  handleAddMemes={handleAddMemes}/>
        </div>
     
     );

@@ -1,6 +1,6 @@
 
 
-const Delete = ({ id, handleDeleteMessage}) => {
+const Delete = ({ id, handleDeleteMemes}) => {
 
 
 
@@ -9,7 +9,7 @@ function handleDeleteClick() {
       method: "DELETE",
     });
     console.log("delete called")
-    handleDeleteMessage(id);
+    handleDeleteMemes(id);
   }
 
     return (  

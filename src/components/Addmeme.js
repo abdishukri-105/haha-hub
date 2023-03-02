@@ -1,8 +1,36 @@
-const Addmeme = () => {
+
+import {useState} from "react"
+const Addmeme = ({handleAddMemes}) => {
+  const [message, setMessage] = useState("")
+  const [title, setTitle] = useState("")
+ 
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    fetch("http://localhost:9292/memes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // username: currentUser.username,
+        // body: body,
+      }),
+    })
+      .then((r) => r.json())
+      .then((newMessage) => {
+        handleAddMemes(newMessage);
+        setMessage("");
+        setTitle("");
+      });
+  }
+  
+
     return (  
       <div className="mr-10 mt-8">
          
-         <form className="max-w-sm mx-auto mt-4 bg-slate-500 rounded-xl p-6  " >
+         <form className="max-w-sm mx-auto mt-4 bg-slate-500 rounded-xl p-6  "  onSubmit={handleSubmit}>
          <h1 className="text-gray-900 text-2xl font-bold text-center pb-6">Add meme</h1>
          <div className="mb-4">
         <label
@@ -15,8 +43,8 @@ const Addmeme = () => {
           name="title"
           type="text"
           placeholder="Enter title"
-        //   value={formData.title}
-        //   onChange={handleChange}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
       </div>
       <div className="mb-4">
@@ -29,8 +57,8 @@ const Addmeme = () => {
           name="message"
           rows="3"
           placeholder="Enter message"
-        //   value={formData.message}
-        //   onChange={handleChange}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
         ></textarea>
       </div>
       <div className="flex items-center justify-center">
