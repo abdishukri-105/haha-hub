@@ -14,7 +14,7 @@ const Navbar = ({isAuthenticated, handleLogout}) => {
               <>
                 <Link to="/mymemes"  exact className="ml-5">My memes</Link>
                 <Link to="/allmemes"  exact className="ml-5">All memes</Link>
-                <Link  onClick={handleLogout}  exact className="ml-5">Logout</Link>
+                <Link  onClick={handleLogout} to="/logout" exact className="ml-5">Logout</Link>
               </>
             ):(
               <Link to="/register" className="ml-8">Register</Link>

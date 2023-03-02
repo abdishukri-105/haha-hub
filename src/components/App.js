@@ -15,11 +15,26 @@ function App() {
   
   const navigate = useNavigate()
 
+  
   const handleLogout = (e) => {
-    e.preventDefault()
-    setIsAuthenticated(false)
-    navigate('/')
-  }
+    e.preventDefault();
+    fetch('http://localhost:9292/logout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        setIsAuthenticated(false);
+        navigate('/');
+      } else {
+        throw new Error('Failed to logout');
+      }
+    })
+    .catch(error => console.error(error));
+  };
+  
 
   // fetch all memes
     useEffect(() => {
