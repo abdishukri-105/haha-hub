@@ -1,32 +1,36 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
-const Login = () => {
+import { useNavigate} from "react-router-dom"
+const Login = ({setIsAuthenticated}) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
    
-  
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-      try {
-        const response = await fetch('http://127.0.0.1:9292/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password }),
-        });
-        const data = await response.json();
+      
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+    
+      fetch('http://127.0.0.1:9292/login', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => {
         if (response.ok) {
-          // login successful
-          console.log(data.message);
+          navigate('/allmemes');
+          setIsAuthenticated(true);
         } else {
-          // login failed
-          console.log("kuna shida")
+          throw new Error('Network response was not ok.');
         }
-      } catch (error) {
-        console.error(error);
-      }
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
     };
+    
     return (  
       <form class="w-full max-w-sm bg-slate-500 shodow-lg rounded-xl p-5 mt-20 "  onSubmit={handleSubmit} >
             <h1 className="text-2xl text-gray-900 text-center mb-6  font-bold">login</h1>
@@ -38,10 +42,9 @@ const Login = () => {
             </label>
           </div>
           <div class="md:w-2/3">
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700" id="username" type="text" placeholder="Jane Doe"
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700" id="username" name="username" type="text" placeholder="Jane Doe"
              required
-             value={username}
-             onChange={(e) => setUsername(e.target.value)}/>
+           />
           </div>
         </div>
         <div class="md:flex md:items-center mb-6">
@@ -52,9 +55,9 @@ const Login = () => {
           </div>
           <div class="md:w-2/3">
             <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700" id="inline-password" type="password" placeholder="******************"
+             name="password"
              required
-             value={password}
-             onChange={(e) => setPassword(e.target.value)}/>
+            />
           </div>
         </div>
       
