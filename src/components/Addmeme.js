@@ -14,8 +14,8 @@ const Addmeme = ({handleAddMemes}) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // username: currentUser.username,
-        // body: body,
+        title: title,
+        message: message,
       }),
     })
       .then((r) => r.json())

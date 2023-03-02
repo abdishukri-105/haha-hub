@@ -15,7 +15,8 @@ function App() {
   
   const navigate = useNavigate()
 
-  
+  console.log(memes)
+
   const handleLogout = (e) => {
     e.preventDefault();
     fetch('http://localhost:9292/logout', {
@@ -36,20 +37,29 @@ function App() {
   };
   
 
-  // fetch all memes
-    useEffect(() => {
-      fetch("http://localhost:9292/memes")
-        .then((r) => r.json())
-        .then((Memes) => setMemes(Memes));
-    }, []);
+//   // fetch all memes
+//     useEffect(() => {
+//       fetch("http://localhost:9292/memes")
+//         .then((r) => r.json())
+//         .then((Memes) => setMemes(Memes));
+//     }, []);
 
-//  fetch memes of specific user
-    useEffect(() => {
-      fetch("http://localhost:9292/users/1")
-        .then((r) => r.json())
-        .then((myMemes) => setMyMemes(myMemes));
-    }, []);
+// //  fetch memes of specific user
+//     useEffect(() => {
+//       fetch("http://localhost:9292/users/4")
+//         .then((r) => r.json())
+//         .then((myMemes) => setMyMemes(myMemes));
+//     }, []);
 
+useEffect(() => {
+  fetch('http://localhost:9292/memes')
+    .then(response => response.json())
+    .then(data => {
+      setMemes(data.all_memes);
+      setMyMemes(data.my_memes);
+    })
+    .catch(error => console.log(error));
+}, []);
 
   function handleDeleteMemes(id) {
     const updatedmemes = myMemes.filter((myMemes) => myMemes.id !== id);
