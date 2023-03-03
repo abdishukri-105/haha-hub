@@ -2,11 +2,9 @@ import { Link } from "react-router-dom";
 
 import { useNavigate} from "react-router-dom"
 const Login = ({setIsAuthenticated}) => {
-
-  
-   
-      
     const navigate = useNavigate()
+
+ 
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -19,6 +17,7 @@ const Login = ({setIsAuthenticated}) => {
       })
       .then(response => {
         if (response.ok) {
+         
           navigate('/allmemes');
           setIsAuthenticated(true);
         } else {
@@ -63,7 +62,7 @@ const Login = ({setIsAuthenticated}) => {
         <div class="md:flex md:items-center mb-5">
           <div class="md:w-1/3"></div>
           <div class="md:w-2/3">
-            <button class="shadow bg-green-700 hover:bg-green-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+            <button class="shadow bg-slate-700 hover:bg-green-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
               login
             </button>
           </div>
@@ -71,7 +70,7 @@ const Login = ({setIsAuthenticated}) => {
         </div>
          <div className="text-gray-900 pl-10 block">Dont have account? 
            <Link to="/register">
-              <button className="shadow ml-8 bg-green-700 hover:bg-green-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">Register</button> 
+              <button className="shadow ml-8 bg-slate-700 hover:bg-green-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">Register</button> 
            </Link>
          </div>
       </form>

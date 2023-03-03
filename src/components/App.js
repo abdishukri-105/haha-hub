@@ -83,7 +83,7 @@ useEffect(() => {
   }
 
   return (
-    <div className="bg-slate-600 h-screen">
+    <div className="bg-gray-600 h-screen">
       
         <Navbar isAuthenticated={isAuthenticated} handleLogout={handleLogout}  />
         

@@ -4,11 +4,11 @@ const Navbar = ({isAuthenticated, handleLogout}) => {
 
     return ( 
         
-        <nav className="bg-transparent border  flex items-center justify-around flex-wrap p-3 md:border-gray-500 md:border-b-2 md:border-t-0 md:border-r-0 md:border-l-0">
+        <nav className="bg-transparent border  flex items-center justify-around flex-wrap p-3 md:border-gray-800 md:border-b-2 md:border-t-0 md:border-r-0 md:border-l-0">
         <div className="flex items-center flex-shrink-0 text-gray-800 mr-6">
-          <Link to="/"className="font-semibold text-2xl text-white tracking-tight">Haha hub</Link>
+          <Link to="/"className="font-semibold text-2xl text-yellow-200 tracking-tight">Haha hub</Link>
         </div>
-        <div className="flex items-center flex-shrink-0 text-white font-bold justify-center">
+        <div className="flex items-center flex-shrink-0 text-yellow-200 font-bold justify-center">
           <Link to="/"  exact className=" ml-5">Home</Link>
           {isAuthenticated? ( 
               <>
