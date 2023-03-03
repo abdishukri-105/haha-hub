@@ -10,12 +10,41 @@ import Mymemes from './Mymemes'
 function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState('');
   const [memes, setMemes] = useState([])
   const [myMemes, setMyMemes] = useState([])
   
   const navigate = useNavigate()
 
   console.log(memes)
+
+// login user
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+  
+    fetch('http://127.0.0.1:9292/login', {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Network response was not ok.');
+        }
+      })
+      .then(data => {
+        setIsAuthenticated(true);
+        setUsername(data.username); // set the username state variable
+        navigate('/allmemes');
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  };
+  
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -85,10 +114,10 @@ useEffect(() => {
   return (
     <div className="bg-gray-600 h-screen">
       
-        <Navbar isAuthenticated={isAuthenticated} handleLogout={handleLogout}  />
+        <Navbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} username={username} />
         
         <Routes>
-           <Route path="/" element={<Home setIsAuthenticated={setIsAuthenticated} />} />
+           <Route path="/" element={<Home setIsAuthenticated={setIsAuthenticated} handleLogin={handleLogin}/>} />
            <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated}  />} />
            {isAuthenticated && (
             <>

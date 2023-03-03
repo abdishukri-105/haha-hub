@@ -1,6 +1,7 @@
 import {  Link } from "react-router-dom"
+import profile from "../images/userimg.png"
 
-const Navbar = ({isAuthenticated, handleLogout}) => {
+const Navbar = ({isAuthenticated, handleLogout, username}) => {
 
     return ( 
         
@@ -20,6 +21,17 @@ const Navbar = ({isAuthenticated, handleLogout}) => {
               <Link to="/register" className="ml-8">Register</Link>
             )
           }
+           </div>
+           {isAuthenticated ? (
+            <div className="flex">
+             
+              <p className="text-yellow-300 font-semibold text-2xl">{username}</p>
+              <img src={profile} alt="the username" className="w-8 ml-4" />
+            </div>
+          ) : null}
+
+
+
 {/*         
           <form className="mr-4 flex">
             <input
@@ -31,7 +43,7 @@ const Navbar = ({isAuthenticated, handleLogout}) => {
               Search
             </button>
           </form> */}
-        </div>
+       
         {/* <div className="flex items-center flex-shrink-0 text-gray-800 font-bold justify-end">
           <button className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
             Logout

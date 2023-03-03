@@ -1,36 +1,13 @@
 import { Link } from "react-router-dom";
 
-import { useNavigate} from "react-router-dom"
-const Login = ({setIsAuthenticated}) => {
-    const navigate = useNavigate()
 
- 
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
-    
-      fetch('http://127.0.0.1:9292/login', {
-        method: 'POST',
-        body: formData,
-      })
-      .then(response => {
-        if (response.ok) {
-         
-          navigate('/allmemes');
-          setIsAuthenticated(true);
-        } else {
-          throw new Error('Network response was not ok.');
-        }
-      })
-      .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-      });
-    };
+const Login = ({handleLogin}) => {
+   
+
     
     return (  
-      <form class="w-full max-w-sm bg-slate-500 shodow-lg rounded-xl p-5 mt-20 "  onSubmit={handleSubmit} >
+      <form class="w-full max-w-sm bg-slate-500 shodow-lg rounded-xl p-5 mt-20 "  onSubmit={handleLogin} >
             <h1 className="text-2xl text-gray-900 text-center mb-6  font-bold">login</h1>
         <div class="md:flex md:items-center mb-6">
             
