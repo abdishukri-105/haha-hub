@@ -66,12 +66,12 @@ function App() {
   };
   
 
-//   // fetch all memes
-//     useEffect(() => {
-//       fetch("http://localhost:9292/memes")
-//         .then((r) => r.json())
-//         .then((Memes) => setMemes(Memes));
-//     }, []);
+  // fetch all memes
+  useEffect(() => {
+    fetch("http://localhost:9292/memes")
+      .then((r) => r.json())
+      .then((response) => setMemes(response.memes));
+  }, []);
 
 // //  fetch memes of specific user
 //     useEffect(() => {
@@ -80,15 +80,15 @@ function App() {
 //         .then((myMemes) => setMyMemes(myMemes));
 //     }, []);
 
-useEffect(() => {
-  fetch('http://localhost:9292/memes')
-    .then(response => response.json())
-    .then(data => {
-      setMemes(data.all_memes);
-      setMyMemes(data.my_memes);
-    })
-    .catch(error => console.log(error));
-}, []);
+// useEffect(() => {
+//   fetch('http://localhost:9292/memes')
+//     .then(response => response.json())
+//     .then(memes => {
+//       console.log("from fetch body",memes);
+//       setMemes(memes);
+//     })
+//     .catch(error => console.log(error));
+// }, []);
 
   function handleDeleteMemes(id) {
     const updatedmemes = myMemes.filter((myMemes) => myMemes.id !== id);
@@ -117,11 +117,11 @@ useEffect(() => {
         <Navbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} username={username} />
         
         <Routes>
-           <Route path="/" element={<Home setIsAuthenticated={setIsAuthenticated} handleLogin={handleLogin}/>} />
+           <Route path="/" element={<Home setIsAuthenticated={setIsAuthenticated}  isAuthenticated={isAuthenticated} handleLogin={handleLogin}/>} />
            <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated}  />} />
            {isAuthenticated && (
             <>
-              <Route path="/shelf" element={<Mymeme />} />
+              {/* <Route path="/shelf" element={<Mymeme />} /> */}
               <Route path="/allmemes" element={<Allmemes memes={memes}/>} />
               <Route path="/mymemes" element={<Mymemes myMemes={myMemes} 
                                                 handleDeleteMemes={handleDeleteMemes}
