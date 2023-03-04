@@ -105,12 +105,41 @@ const renderMymemes = () => {
                 setMyMemes={setMyMemes}
                 handleDeleteMemes={handleDeleteMemes}
                 handleAddMemes={handleAddMemes} 
-                handleUpdateMeme={handleUpdateMeme} 
+                handleEditMeme={handleEditMeme}
             />
   } else {
     navigate('/login');
   }
 }
+
+
+
+const handleEditMeme = (id, updatedMeme) => {
+  fetch(`http://localhost:9292/users/${userId}/memes/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedMeme)
+  })
+    .then(response => {
+      if (response.ok) {
+        // Update the meme in the state
+        const updatedMemes = myMemes.map(meme => {
+          if (meme.id === id) {
+            return { ...meme, ...updatedMeme };
+          }
+          return meme;
+        });
+        setMyMemes(updatedMemes);
+      } else {
+        throw new Error('Network response was not ok.');
+      }
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+};
 
 
   function handleDeleteMemes(id) {
@@ -123,16 +152,7 @@ const renderMymemes = () => {
     setMyMemes([...myMemes, newMyMemes]);
   }
 
-  function handleUpdateMeme(updatedMemeObj) {
-    const updatedMemes = Mymemes.map((message) => {
-      if (message.id === updatedMemeObj.id) {
-        return updatedMemeObj;
-      } else {
-        return message;
-      }
-    });
-    setMyMemes(updatedMemes);
-  }
+
 
   return (
     <div className="">

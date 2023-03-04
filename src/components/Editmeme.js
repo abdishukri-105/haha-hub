@@ -1,7 +1,7 @@
 const Editmeme = () => {
     return ( 
-        <div>
-            
+        <div className="text-2xl">
+            <ion-icon name="create-outline"></ion-icon>
         </div>
      );
 }

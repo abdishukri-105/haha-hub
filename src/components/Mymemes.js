@@ -1,39 +1,72 @@
-import Addmeme from "./Addmeme";
-import Delete from "./Delete";
-// import { useState } from "react";
+import { useState } from "react";
+import Delete from "./Delete"
+import Addmeme from "./Addmeme"
 
-const Mymeme = ({userId, myMemes, handleDeleteMemes, handleAddMemes, handleUpdateMeme }) => {
-  // const [isEditing, setIsEditing] = useState(false)
+const Mymeme = ({ userId, myMemes, handleDeleteMemes, handleAddMemes, handleEditMeme }) => {
+  const [editableMemeId, setEditableMemeId] = useState(null)
 
-  // function handleUpdateMessage(updatedMeme) {
-  //   setIsEditing(false);
-  //   handleUpdateMeme(updatedMeme);
-  // }
-
-  console.log(myMemes);
-
-const allMemes = myMemes
+  const allMemes = myMemes
     ? myMemes.map((meme) => (
         <div
           key={meme.id}
-          className="text-white p-4 mt-5 bg-slate-400 border ml-20 rounded-xl shadow"
+          className={`text-gray-900 p-4 mt-5 bg-slate-400 border ml-20 rounded-xl shadow ${
+            editableMemeId === meme.id ? "border-gray-500" : ""
+          }`}
         >
           <p className="">
             {" "}
             <span className="text-gray-900 font-bold">title: </span>{" "}
-            {meme.title}{" "}
+            {editableMemeId === meme.id ? (
+              <input
+                type="text"
+                value={meme.title}
+                onChange={(e) => handleEditMeme(meme.id, { ...meme, title: e.target.value })}
+              />
+            ) : (
+              meme.title
+            )}{" "}
           </p>
           <p className="">
             {" "}
             <span className="text-gray-900 font-bold">punchline: </span>
-            {meme.message}{" "}
+            {editableMemeId === meme.id ? (
+              <input
+                type="text"
+                value={meme.message}
+                onChange={(e) => handleEditMeme(meme.id, { ...meme, message: e.target.value })}
+              />
+            ) : (
+              meme.message
+            )}{" "}
           </p>
-          <Delete
-            userId={userId}
-            id={meme.id}
-            myMemes={myMemes}
-            handleDeleteMemes={handleDeleteMemes}
-          />
+          {editableMemeId === meme.id ? (
+            <button
+              onClick={() => {
+                setEditableMemeId(null);
+              }}
+              className="bg-blue-500 text-white py-2 px-4 rounded mt-3"
+            >
+              Save
+            </button>
+          ) : (
+            <div className="flex mt-3">
+              <div className="mr-3">
+                <ion-icon
+                  name="create-outline"
+                  onClick={() => setEditableMemeId(meme.id)}
+                  className="text-2xl cursor-pointer"
+                ></ion-icon>
+              </div>
+              <div>
+                <Delete
+                  userId={userId}
+                  id={meme.id}
+                  myMemes={myMemes}
+                  handleDeleteMemes={handleDeleteMemes}
+                />
+              </div>
+            </div>
+          )}
         </div>
       ))
     : null;
