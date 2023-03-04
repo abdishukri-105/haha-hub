@@ -1,4 +1,9 @@
-const Allmemes = ({ memes }) => {
+import Search from "./Search";
+
+const Allmemes = ({ memes, handleSearchChange  }) => {
+    
+  
+
    const allmemes = memes.map((meme) => {
      const created = new Date(meme.created_at);
      const now = new Date();
@@ -16,6 +21,8 @@ const Allmemes = ({ memes }) => {
      }
  
      return (
+       <div>
+        
        <div
          key={meme.id}
          className="text-white bg-slate-200 p-4 mt-5 border w-2/4 ml-80 rounded-xl shadow"
@@ -34,10 +41,16 @@ const Allmemes = ({ memes }) => {
          </p>
          
        </div>
+       </div>
      );
    });
  
-   return <div className=" mt-10 pb-20 ">{allmemes}</div>;
+   return <div>
+              <Search handleSearchChange={handleSearchChange} />
+             <div className=" mt-10 pb-20 ">
+              {allmemes}
+             </div>
+            </div>
  };
  
  export default Allmemes;

@@ -13,6 +13,7 @@ function App() {
   const [userId, setUserId] = useState('');
   const [memes, setMemes] = useState([])
   const [myMemes, setMyMemes] = useState([])
+  const [search, setSearch] = useState("");
   
   const navigate = useNavigate()
 
@@ -45,7 +46,7 @@ function App() {
         console.error('There was a problem with the fetch operation:', error);
       });
   };
-  
+
   console.log(userId)
 
   const handleLogout = (e) => {
@@ -68,12 +69,14 @@ function App() {
   };
   
 
-  // fetch all memes
-  useEffect(() => {
-    fetch("http://localhost:9292/memes")
-      .then((r) => r.json())
-      .then((response) => setMemes(response.memes));
-  }, []);
+// fetch all memes
+useEffect(() => {
+  fetch("http://localhost:9292/memes")
+    .then((r) => r.json())
+    .then((response) => setMemes(response.memes));
+}, []);
+
+
 
 //  fetch memes of authenticated user
 useEffect(() => {
@@ -85,6 +88,14 @@ useEffect(() => {
     })
     .catch((error) => console.error(error));
 }, [userId]);
+
+const handleSearchChange = (value) => {
+  console.log(value)
+  setSearch(value);
+};
+
+const displayedMemes = memes.filter((meme) => meme.title.toLowerCase().includes(search.toLowerCase()))
+
 
 const renderMymemes = () => {
   if (isAuthenticated) {
@@ -133,7 +144,7 @@ const renderMymemes = () => {
            <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated}  />} />
            {isAuthenticated && (
             <>
-              <Route path="/allmemes" element={<Allmemes memes={memes}/>} />
+              <Route path="/allmemes" element={<Allmemes memes={displayedMemes} displayedMemes={displayedMemes} handleSearchChange={handleSearchChange}/>} />
               <Route path="/mymemes" element={renderMymemes()}/>
             </>
            )}
