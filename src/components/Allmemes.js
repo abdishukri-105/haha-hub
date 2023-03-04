@@ -18,26 +18,26 @@ const Allmemes = ({ memes }) => {
      return (
        <div
          key={meme.id}
-         className="text-white p-4 mt-5 bg-slate-400 border w-2/4 ml-80 rounded-xl shadow"
+         className="text-white bg-slate-200 p-4 mt-5 border w-2/4 ml-80 rounded-xl shadow"
        >
-         <div className="flex border mb-1 md:border-slate-300 md:border-b-2 md:border-t-0 md:border-r-0 md:border-l-0  ">
-            {meme.user && <p className="mr-4  text-yellow-500 font-bold">{meme.user.username}</p>}
-            <p className="text-yellow-200 mb-2">{formattedDate}</p>
+         <div className="flex border mb-1 md:border-slate-400 md:border-b-1 md:border-t-0 md:border-r-0 md:border-l-0  ">
+            {meme.user  && <p className="mr-4  text-teal-500 font-bold "> <span className="text-orange-600">created by:</span>  {meme.user.username}</p>}
+            <p className="text-pink-500 mb-1">{formattedDate}</p>
          </div>
          <p className="">
-           <span className="text-gray-900 font-bold">title: </span>{" "}
-           {meme.title}
+           <span className="text-gray-900 font-bold"> "{meme.title}" </span>{" "}
+          
          </p>
          <p className="">
-           <span className="text-gray-900 font-bold">punchline: </span>
-           {meme.message}
+           <span className="text-gray-900 font-bold">"{meme.message}"</span>
+           
          </p>
          
        </div>
      );
    });
  
-   return <div className=" mt-10 pb-20 bg-slate-600">{allmemes}</div>;
+   return <div className=" mt-10 pb-20 ">{allmemes}</div>;
  };
  
  export default Allmemes;

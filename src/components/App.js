@@ -2,7 +2,6 @@ import { Routes , Route, useNavigate} from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 import Navbar from "./Navbar"
 import Home from "./Home"
-import Mymeme from "./Mymemes"
 import Register from './Register'
 import Allmemes from './Allmemes'
 import Mymemes from './Mymemes'
@@ -10,13 +9,14 @@ import Mymemes from './Mymemes'
 function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('')
+  const [userId, setUserId] = useState('');
   const [memes, setMemes] = useState([])
   const [myMemes, setMyMemes] = useState([])
   
   const navigate = useNavigate()
 
-  console.log(memes)
+  console.log(myMemes)
 
 // login user
   const handleLogin = (e) => {
@@ -27,7 +27,7 @@ function App() {
     fetch('http://127.0.0.1:9292/login', {
       method: 'POST',
       body: formData,
-    })
+    }) 
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -37,14 +37,15 @@ function App() {
       })
       .then(data => {
         setIsAuthenticated(true);
-        setUsername(data.username); // set the username state variable
+        setUsername(data.username); 
+        setUserId(data.userId);
         navigate('/allmemes');
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
       });
   };
-  
+  console.log(userId)
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -73,22 +74,27 @@ function App() {
       .then((response) => setMemes(response.memes));
   }, []);
 
-// //  fetch memes of specific user
-//     useEffect(() => {
-//       fetch("http://localhost:9292/users/4")
-//         .then((r) => r.json())
-//         .then((myMemes) => setMyMemes(myMemes));
-//     }, []);
+//  fetch memes of authenticated user
+useEffect(() => {
+  fetch(`http://localhost:9292/my_memes/${userId}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      setMyMemes(data.memes);
+    })
+    .catch((error) => console.error(error));
+}, [userId]);
 
-// useEffect(() => {
-//   fetch('http://localhost:9292/memes')
-//     .then(response => response.json())
-//     .then(memes => {
-//       console.log("from fetch body",memes);
-//       setMemes(memes);
-//     })
-//     .catch(error => console.log(error));
-// }, []);
+    const renderMymemes = () => {
+      if (isAuthenticated) {
+        return <Mymemes myMemes={myMemes} setMyMemes={setMyMemes} handleDeleteMemes={handleDeleteMemes}
+        handleAddMemes={handleAddMemes} 
+        handleUpdateMeme={handleUpdateMeme} />
+      } else {
+        navigate('/login');
+      }
+    }
+
 
   function handleDeleteMemes(id) {
     const updatedmemes = myMemes.filter((myMemes) => myMemes.id !== id);
@@ -112,7 +118,7 @@ function App() {
   }
 
   return (
-    <div className="bg-gray-600 h-screen">
+    <div className="">
       
         <Navbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} username={username} />
         
@@ -123,11 +129,7 @@ function App() {
             <>
               {/* <Route path="/shelf" element={<Mymeme />} /> */}
               <Route path="/allmemes" element={<Allmemes memes={memes}/>} />
-              <Route path="/mymemes" element={<Mymemes myMemes={myMemes} 
-                                                handleDeleteMemes={handleDeleteMemes}
-                                                handleAddMemes={handleAddMemes} 
-                                                handleUpdateMeme={handleUpdateMeme}
-              />} />
+              <Route path="/mymemes" element={renderMymemes()}/>
               {/* <Route path="/search" element={<Search results={results} searchInput={searchInput} setSearchInput={setSearchInput} handleSubmit={handleSubmit} isLoading = {isLoading} addToShelf={addToShelf}/>} /> */}
             </>
            )}
