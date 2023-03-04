@@ -85,15 +85,20 @@ useEffect(() => {
     .catch((error) => console.error(error));
 }, [userId]);
 
-    const renderMymemes = () => {
-      if (isAuthenticated) {
-        return <Mymemes myMemes={myMemes} setMyMemes={setMyMemes} handleDeleteMemes={handleDeleteMemes}
-        handleAddMemes={handleAddMemes} 
-        handleUpdateMeme={handleUpdateMeme} />
-      } else {
-        navigate('/login');
-      }
-    }
+const renderMymemes = () => {
+  if (isAuthenticated) {
+    return <Mymemes
+                userId={userId}
+                myMemes={myMemes}
+                setMyMemes={setMyMemes}
+                handleDeleteMemes={handleDeleteMemes}
+                handleAddMemes={handleAddMemes} 
+                handleUpdateMeme={handleUpdateMeme} 
+            />
+  } else {
+    navigate('/login');
+  }
+}
 
 
   function handleDeleteMemes(id) {
@@ -127,10 +132,8 @@ useEffect(() => {
            <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated}  />} />
            {isAuthenticated && (
             <>
-              {/* <Route path="/shelf" element={<Mymeme />} /> */}
               <Route path="/allmemes" element={<Allmemes memes={memes}/>} />
               <Route path="/mymemes" element={renderMymemes()}/>
-              {/* <Route path="/search" element={<Search results={results} searchInput={searchInput} setSearchInput={setSearchInput} handleSubmit={handleSubmit} isLoading = {isLoading} addToShelf={addToShelf}/>} /> */}
             </>
            )}
         </Routes>

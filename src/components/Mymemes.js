@@ -2,7 +2,7 @@ import Addmeme from "./Addmeme";
 import Delete from "./Delete";
 // import { useState } from "react";
 
-const Mymeme = ({ myMemes, handleDeleteMessage, handleAddMemes, handleUpdateMeme }) => {
+const Mymeme = ({userId, myMemes, handleDeleteMessage, handleAddMemes, handleUpdateMeme }) => {
   // const [isEditing, setIsEditing] = useState(false)
 
   // function handleUpdateMessage(updatedMeme) {
@@ -12,7 +12,7 @@ const Mymeme = ({ myMemes, handleDeleteMessage, handleAddMemes, handleUpdateMeme
 
   console.log(myMemes);
 
-  const allMemes = myMemes
+const allMemes = myMemes
     ? myMemes.map((meme) => (
         <div
           key={meme.id}
@@ -40,7 +40,7 @@ const Mymeme = ({ myMemes, handleDeleteMessage, handleAddMemes, handleUpdateMeme
   return (
     <div className="grid grid-cols-2">
       <div className=" ">{allMemes}</div>
-      <Addmeme handleAddMemes={handleAddMemes} />
+      <Addmeme handleAddMemes={handleAddMemes} userId={userId} />
     </div>
   );
 };
