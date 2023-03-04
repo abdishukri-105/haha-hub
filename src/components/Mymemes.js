@@ -44,7 +44,7 @@ const Mymeme = ({ userId, myMemes, handleDeleteMemes, handleAddMemes, handleEdit
               onClick={() => {
                 setEditableMemeId(null);
               }}
-              className="bg-blue-500 text-white py-2 px-4 rounded mt-3"
+              className="bg-teal-700 rounded-xl text-white py-2 px-4  mt-3"
             >
               Save
             </button>

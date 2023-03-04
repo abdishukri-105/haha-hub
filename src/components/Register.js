@@ -6,6 +6,7 @@ const Register = ({setIsAuthenticated}) => {
     
     const navigate = useNavigate()
 
+    // register user
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -27,8 +28,10 @@ const Register = ({setIsAuthenticated}) => {
         } catch (error) {
           console.error(error);
         }
-      };
+      }
       
+
+
     return ( 
         <div className="flex justify-center items-center ">
         <form class="w-full max-w-sm bg-slate-500 shodow-lg rounded-xl p-5 mt-20 " onSubmit={handleSubmit}>
