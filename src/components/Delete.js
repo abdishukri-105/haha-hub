@@ -1,11 +1,9 @@
 
 
-const Delete = ({ id, handleDeleteMemes}) => {
-
-
+const Delete = ({ userId, id, handleDeleteMemes}) => {
 
 function handleDeleteClick() {
-    fetch(`http://localhost:9292/memes/${id}`, {
+    fetch(`http://localhost:9292/memes/${id}/users/${userId}`, {
       method: "DELETE",
     });
     console.log("delete called")

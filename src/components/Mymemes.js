@@ -2,7 +2,7 @@ import Addmeme from "./Addmeme";
 import Delete from "./Delete";
 // import { useState } from "react";
 
-const Mymeme = ({userId, myMemes, handleDeleteMessage, handleAddMemes, handleUpdateMeme }) => {
+const Mymeme = ({userId, myMemes, handleDeleteMemes, handleAddMemes, handleUpdateMeme }) => {
   // const [isEditing, setIsEditing] = useState(false)
 
   // function handleUpdateMessage(updatedMeme) {
@@ -29,9 +29,10 @@ const allMemes = myMemes
             {meme.message}{" "}
           </p>
           <Delete
+            userId={userId}
             id={meme.id}
             myMemes={myMemes}
-            handleDeleteMessage={handleDeleteMessage}
+            handleDeleteMemes={handleDeleteMemes}
           />
         </div>
       ))
