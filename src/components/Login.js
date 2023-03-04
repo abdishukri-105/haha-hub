@@ -7,12 +7,12 @@ const Login = ({handleLogin}) => {
 
     
     return (  
-      <form class="w-full max-w-sm bg-slate-500 shodow-lg rounded-xl p-5 mt-20 "  onSubmit={handleLogin} >
-            <h1 className="text-2xl text-gray-900 text-center mb-6  font-bold">login</h1>
+      <form class="w-full max-w-sm bg-slate-300 shodow-lg rounded-xl p-5 mt-20 "  onSubmit={handleLogin} >
+            <h1 className="text-2xl text-teal-500 text-center mb-6  font-bold">login</h1>
         <div class="md:flex md:items-center mb-6">
             
           <div class="md:w-1/3">
-            <label class="block text-gray-900 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-username">
+            <label class="block text-gray-600 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-username">
               Username
             </label>
           </div>
@@ -24,7 +24,7 @@ const Login = ({handleLogin}) => {
         </div>
         <div class="md:flex md:items-center mb-6">
           <div class="md:w-1/3">
-            <label class="block text-gray-900 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+            <label class="block text-gray-600 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
               Password
             </label>
           </div>
@@ -39,7 +39,7 @@ const Login = ({handleLogin}) => {
         <div class="md:flex md:items-center mb-5">
           <div class="md:w-1/3"></div>
           <div class="md:w-2/3">
-            <button class="shadow bg-slate-700 hover:bg-green-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+            <button class="shadow bg-slate-400 hover:bg-slate-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
               login
             </button>
           </div>
@@ -47,7 +47,7 @@ const Login = ({handleLogin}) => {
         </div>
          <div className="text-gray-900 pl-10 block">Dont have account? 
            <Link to="/register">
-              <button className="shadow ml-8 bg-slate-700 hover:bg-green-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">Register</button> 
+              <button className="shadow ml-8 bg-slate-400 hover:bg-slate-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">Register</button> 
            </Link>
          </div>
       </form>

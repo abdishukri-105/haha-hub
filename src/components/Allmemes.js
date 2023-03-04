@@ -37,9 +37,7 @@ const Allmemes = ({ memes, handleSearchChange  }) => {
          </p>
          <p className="">
            <span className="text-gray-900 font-bold">"{meme.message}"</span>
-           
          </p>
-         
        </div>
        </div>
      );
