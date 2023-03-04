@@ -27,8 +27,8 @@ const Addmeme = ({ handleAddMemes, userId }) => {
   
 
   return (  
-    <div className="mr-10 mt-8">
-      <form className="max-w-sm mx-auto mt-4 bg-slate-300 rounded-xl p-6  "  onSubmit={handleSubmit}>
+    <div className="mr-10 mt-10">
+      <form className="max-w-sm mx-auto  bg-slate-300 rounded-xl p-6  "  onSubmit={handleSubmit}>
         <h1 className="text-gray-900 text-2xl font-bold text-center pb-6">Add meme</h1>
         <div className="mb-4">
           <label className="block text-gray-900 text-sm font-bold mb-2" htmlFor="title">

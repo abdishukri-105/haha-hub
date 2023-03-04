@@ -25,11 +25,11 @@ const Allmemes = ({ memes, handleSearchChange  }) => {
         
        <div
          key={meme.id}
-         className="text-white bg-slate-200 p-4 mt-5 border w-2/4 ml-80 rounded-xl shadow"
+         className="text-white bg-slate-100 p-2 mt-5 border w-2/4 ml-80 rounded-lg shadow"
        >
-         <div className="flex border mb-1 md:border-slate-400 md:border-b-1 md:border-t-0 md:border-r-0 md:border-l-0  ">
+         <div className="flex justify-between border mb-1 md:border-slate-300 md:border-b-1 md:border-t-0 md:border-r-0 md:border-l-0  ">
             {meme.user  && <p className="mr-4  text-teal-500 font-bold "> <span className="text-orange-600">created by:</span>  {meme.user.username}</p>}
-            <p className="text-pink-500 mb-1">{formattedDate}</p>
+            <p className="text-gray-500 mb-0">{formattedDate}</p>
          </div>
          <p className="">
            <span className="text-gray-900 font-bold"> "{meme.title}" </span>{" "}

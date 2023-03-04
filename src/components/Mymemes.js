@@ -7,9 +7,7 @@ const Mymeme = ({ userId, myMemes, handleDeleteMemes, handleAddMemes, handleEdit
 
   const allMemes = myMemes
     ? myMemes.map((meme) => (
-        <div
-          key={meme.id}
-          className={`text-gray-900 p-4 mt-5 bg-slate-200 border ml-20 rounded-xl shadow ${
+        <div key={meme.id} className={`text-gray-900 p-4 mt-10 bg-slate-200 border ml-20 rounded-xl shadow-sm ${
             editableMemeId === meme.id ? "border-gray-500" : ""
           }`}
         >
@@ -32,7 +30,7 @@ const Mymeme = ({ userId, myMemes, handleDeleteMemes, handleAddMemes, handleEdit
           </div>
           <p className="">
             {" "}
-            <span className="text-gray-900 font-bold">title: </span>{" "}
+            <span className="text-gray-900 font-bold "></span>{" "}
             {editableMemeId === meme.id ? (
               <input
                 type="text"
@@ -45,7 +43,7 @@ const Mymeme = ({ userId, myMemes, handleDeleteMemes, handleAddMemes, handleEdit
           </p>
           <p className="">
             {" "}
-            <span className="text-gray-900 font-bold">punchline: </span>
+            <span className="text-gray-900 font-bold"> </span>
             {editableMemeId === meme.id ? (
               <input
                 type="text"
