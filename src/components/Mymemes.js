@@ -9,10 +9,27 @@ const Mymeme = ({ userId, myMemes, handleDeleteMemes, handleAddMemes, handleEdit
     ? myMemes.map((meme) => (
         <div
           key={meme.id}
-          className={`text-gray-900 p-4 mt-5 bg-slate-400 border ml-20 rounded-xl shadow ${
+          className={`text-gray-900 p-4 mt-5 bg-slate-200 border ml-20 rounded-xl shadow ${
             editableMemeId === meme.id ? "border-gray-500" : ""
           }`}
         >
+          <div className="flex justify-end">
+            <div className="mr-2">
+              <Delete
+                userId={userId}
+                id={meme.id}
+                myMemes={myMemes}
+                handleDeleteMemes={handleDeleteMemes}
+              />
+            </div>
+            <div>
+              <ion-icon
+                name="create-outline"
+                onClick={() => setEditableMemeId(meme.id)}
+                className="text-2xl cursor-pointer"
+              ></ion-icon>
+            </div>
+          </div>
           <p className="">
             {" "}
             <span className="text-gray-900 font-bold">title: </span>{" "}
@@ -48,25 +65,7 @@ const Mymeme = ({ userId, myMemes, handleDeleteMemes, handleAddMemes, handleEdit
             >
               Save
             </button>
-          ) : (
-            <div className="flex mt-3">
-              <div className="mr-3">
-                <ion-icon
-                  name="create-outline"
-                  onClick={() => setEditableMemeId(meme.id)}
-                  className="text-2xl cursor-pointer"
-                ></ion-icon>
-              </div>
-              <div>
-                <Delete
-                  userId={userId}
-                  id={meme.id}
-                  myMemes={myMemes}
-                  handleDeleteMemes={handleDeleteMemes}
-                />
-              </div>
-            </div>
-          )}
+          ) : null}
         </div>
       ))
     : null;
