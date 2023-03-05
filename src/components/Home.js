@@ -10,7 +10,7 @@ const Home = ({ setIsAuthenticated, isAuthenticated, handleLogin }) => {
           style={{ backgroundImage: `url(${joker})` }}
         >
           <div className="text-3xl text-center mt-14 text-teal-500 w-2/3 font-bold">
-            <h1 className="mb-10">Welcome to the Haha Hub, my fellow clown!</h1>  
+            {/* <h1 className="mb-10"> fellow clown!</h1>   */}
             <h1>Prepare yourself for some side-splitting, gut-busting, and knee-slapping laughs!</h1>
           </div>
         </div>

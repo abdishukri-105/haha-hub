@@ -29,10 +29,10 @@ const Addmeme = ({ handleAddMemes, userId }) => {
   return (  
     <div className="mr-10 mt-10">
       <form className="max-w-sm mx-auto  bg-slate-300 rounded-xl p-6  "  onSubmit={handleSubmit}>
-        <h1 className="text-gray-900 text-2xl font-bold text-center pb-6">Add meme</h1>
+        <h1 className="text-gray-900 text-2xl font-bold text-center pb-6">Create meme</h1>
         <div className="mb-4">
           <label className="block text-gray-900 text-sm font-bold mb-2" htmlFor="title">
-            Title
+            first
           </label>
           <input className=" bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700" 
             name="title"
@@ -44,7 +44,7 @@ const Addmeme = ({ handleAddMemes, userId }) => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-900 text-sm font-bold mb-2" htmlFor="message">
-            Message
+            second
           </label>
           <textarea
             className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700" 

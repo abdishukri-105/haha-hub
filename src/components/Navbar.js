@@ -5,7 +5,7 @@ const Navbar = ({isAuthenticated, handleLogout, username}) => {
 
     return ( 
         
-        <nav className="bg-transparent border  flex items-center justify-around flex-wrap p-3 md:border-slate-300 md:border-b-2 md:border-t-0 md:border-r-0 md:border-l-0">
+        <nav className="bg-transparent border shadow-lg flex items-center justify-around flex-wrap p-3 md:border-slate-100 md:border-b-2 md:border-t-0 md:border-r-0 md:border-l-0">
         <div className="flex items-center flex-shrink-0 text-gray-800 mr-6">
           <Link to="/"className="font-semibold text-2xl text-teal-500 tracking-tight">Haha hub</Link>
         </div>
