@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
 
 
-
 const Login = ({handleLogin}) => {
-   
-
-    
+     
     return (  
     <div className="flex justify-center items-center">
-      <form class="w-full max-w-sm bg-slate-300 shodow-xl rounded-xl p-5 mt-20 "  onSubmit={handleLogin} >
+      <form class="w-full max-w-sm bg-slate-300 shodow-xl rounded-xl p-5 mt-20 " noValidate no-autocomplete onSubmit={handleLogin} >
             <h1 className="text-2xl text-teal-500 text-center mb-6  font-bold">login</h1>
         <div class="md:flex md:items-center mb-6">
             
@@ -20,6 +17,7 @@ const Login = ({handleLogin}) => {
           <div class="md:w-2/3">
             <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700" id="username" name="username" type="text" placeholder="Jane Doe"
              required
+             autoComplete="off"
            />
           </div>
         </div>
@@ -33,6 +31,7 @@ const Login = ({handleLogin}) => {
             <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700" id="inline-password" type="password" placeholder="******************"
              name="password"
              required
+             autoComplete="off"
             />
           </div>
         </div>

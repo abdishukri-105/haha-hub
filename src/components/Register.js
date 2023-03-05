@@ -34,7 +34,7 @@ const Register = ({setIsAuthenticated}) => {
 
     return ( 
         <div className="flex justify-center items-center ">
-        <form class="w-full max-w-sm bg-slate-300 shodow-xl rounded-xl p-5 mt-20 " onSubmit={handleSubmit}>
+        <form class="w-full max-w-sm bg-slate-300 shodow-xl rounded-xl p-5 mt-20 "noValidate no-autocomplete onSubmit={handleSubmit}>
           <h1 className="text-2xl text-teal-500 text-center mb-6  font-bold">Register to Laugh</h1>
       
           <div class="md:flex md:items-center mb-6">   
@@ -48,7 +48,10 @@ const Register = ({setIsAuthenticated}) => {
               id="username"
                type="text"
                name="username"
-               placeholder="Jane Doe" required/>
+               placeholder="Jane Doe" 
+               required
+               autoComplete="off"
+               />
             </div>
           </div>
       
@@ -59,7 +62,7 @@ const Register = ({setIsAuthenticated}) => {
               </label>
             </div>
             <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700" id="email" type="text" name="email"  placeholder="Jane Doe" required/>
+              <input autoComplete="off" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700" id="email" type="text" name="email"  placeholder="Jane Doe" required/>
             </div>
           </div>
           <div class="md:flex md:items-center mb-6">
@@ -69,7 +72,7 @@ const Register = ({setIsAuthenticated}) => {
               </label>
             </div>
             <div class="md:w-2/3">
-              <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700" id="password" type="password" name="password" placeholder="******************" required/>
+              <input autoComplete="off" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-700" id="password" type="password" name="password" placeholder="******************" required/>
             </div>
           </div>
       
