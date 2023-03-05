@@ -126,13 +126,14 @@ const handleEditMeme = (id, updatedMeme) => {
   })
     .then(response => {
       if (response.ok) {
-        // Update the meme in the state
+        console.log(response)
         const updatedMemes = myMemes.map(meme => {
           if (meme.id === id) {
             return { ...meme, ...updatedMeme };
           }
           return meme;
         });
+        console.log(updatedMemes)
         setMyMemes(updatedMemes);
       } else {
         throw new Error('Network response was not ok.');

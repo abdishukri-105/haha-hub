@@ -1,70 +1,48 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Haha Hub - Meme Generator
 
-In the project directory, you can run:
+Haha Hub is a web application built with React that allows you to create jokes using dad jokes format. It consumes the API provided by the Meme Generator API backend to fetch jokes templates and generate new jokes.
 
-### `npm start`
+## Features
+ - Browse all jokes
+ - Create new jokes 
+- delete your jokes
+- update your jokes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# installation and Usage
+To run the application locally, you need to have Node.js and npm installed on your machine. You also need to have the Meme Generator API backend running on http://localhost:3000.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Clone this repository and navigate to the project directory:
 
-### `npm test`
+      git clone https://github.com/your-username/haha-hub.git 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ navigate to the project directory
 
-### `npm run build`
+    cd haha-hub
+                
+Install dependencies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+     npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Start the development server:
 
-### `npm run eject`
+    npm start
+ Open http://localhost:3000 in your web browser to access the application.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Note: If the Meme Generator API backend is not running on http://localhost:9292, you need to update the REACT_APP_API_URL variable in the .env file to match the actual backend URL.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Haha Hub depends on the following libraries and tools:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- React - JavaScript library for building user interfaces
+- Tailwind - CSS framework for responsive design
+- ionic icons - Icon toolkit for web applications
+Credits
 
-## Learn More
+## Author
+This repository is maintained by:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Abdishukri Mohamed](https://github.com/abdishukri-105) 
