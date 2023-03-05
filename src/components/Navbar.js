@@ -5,12 +5,13 @@ const Navbar = ({isAuthenticated, handleLogout, username}) => {
 
     return ( 
         
-        <nav className="bg-transparent border shadow-lg flex items-center justify-around flex-wrap p-3 md:border-slate-100 md:border-b-2 md:border-t-0 md:border-r-0 md:border-l-0">
+      <nav className="bg-transparent border shadow-lg flex items-center justify-around flex-wrap p-3 md:border-slate-100 md:border-b-2 md:border-t-0 md:border-r-0 md:border-l-0">
         <div className="flex items-center flex-shrink-0 text-gray-800 mr-6">
           <Link to="/"className="font-semibold text-2xl text-teal-500 tracking-tight">Haha hub</Link>
         </div>
         <div className="flex items-center flex-shrink-0 text-teal-500 font-bold justify-center">
           <Link to="/"  exact className=" ml-5">Home</Link>
+       
           {isAuthenticated? ( 
               <>
                 <Link to="/allmemes"  exact className="ml-5">All jokes</Link>
@@ -18,7 +19,11 @@ const Navbar = ({isAuthenticated, handleLogout, username}) => {
                 <Link  onClick={handleLogout} to="/logout" exact className="ml-5">Logout</Link>
               </>
             ):(
+              <>
+               <Link to="/login" className="ml-8">Login</Link>
               <Link to="/register" className="ml-8">Register</Link>
+             
+              </>
             )
           }
            </div>

@@ -20,7 +20,7 @@ const Register = ({setIsAuthenticated}) => {
       
           if (response.ok) {
             setIsAuthenticated(true);
-            navigate('/allmemes');
+            navigate('/login');
           } else {
             const errorData = await response.json();
             console.log(errorData);
@@ -34,7 +34,7 @@ const Register = ({setIsAuthenticated}) => {
 
     return ( 
         <div className="flex justify-center items-center ">
-        <form class="w-full max-w-sm bg-slate-300 shodow-lg rounded-xl p-5 mt-20 " onSubmit={handleSubmit}>
+        <form class="w-full max-w-sm bg-slate-300 shodow-xl rounded-xl p-5 mt-20 " onSubmit={handleSubmit}>
           <h1 className="text-2xl text-teal-500 text-center mb-6  font-bold">Register to Laugh</h1>
       
           <div class="md:flex md:items-center mb-6">   

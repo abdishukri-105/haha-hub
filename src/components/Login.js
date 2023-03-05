@@ -7,7 +7,8 @@ const Login = ({handleLogin}) => {
 
     
     return (  
-      <form class="w-full max-w-sm bg-slate-300 shodow-lg rounded-xl p-5 mt-20 "  onSubmit={handleLogin} >
+    <div className="flex justify-center items-center">
+      <form class="w-full max-w-sm bg-slate-300 shodow-xl rounded-xl p-5 mt-20 "  onSubmit={handleLogin} >
             <h1 className="text-2xl text-teal-500 text-center mb-6  font-bold">login</h1>
         <div class="md:flex md:items-center mb-6">
             
@@ -51,6 +52,7 @@ const Login = ({handleLogin}) => {
            </Link>
          </div>
       </form>
+    </div>
     );
 }
  

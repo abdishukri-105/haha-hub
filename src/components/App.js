@@ -5,6 +5,8 @@ import Home from "./Home"
 import Register from './Register'
 import Allmemes from './Allmemes'
 import Mymemes from './Mymemes'
+import Login from "./Login"
+import joker from "../images/laugh.jpg"
 
 function App() {
 
@@ -155,11 +157,12 @@ const handleEditMeme = (id, updatedMeme) => {
 
 
   return (
-    <div className="">
+    <div className=" h-screen bg-cover bg-no-repeat bg-center bg-fixed " style={{ backgroundImage: `url(${joker})` }}>
       
         <Navbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} username={username} />
         
-        <Routes>
+        <Routes> 
+           <Route path="/login"  element={<Login setIsAuthenticated={setIsAuthenticated} handleLogin={handleLogin} /> }/>
            <Route path="/" element={<Home setIsAuthenticated={setIsAuthenticated}  isAuthenticated={isAuthenticated} handleLogin={handleLogin}/>} />
            <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated}  />} />
            {isAuthenticated && (
