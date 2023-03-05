@@ -5,8 +5,8 @@ import Addmeme from "./Addmeme"
 const Mymeme = ({ userId, myMemes, handleDeleteMemes, handleAddMemes, handleEditMeme }) => {
   const [editableMemeId, setEditableMemeId] = useState(null)
 
-  const allMemes = myMemes
-  ? myMemes.map((meme) => (
+  const allMemes = myMemes && myMemes.length > 0 ? 
+    myMemes.map((meme) => (
       <div key={meme.id} className={`text-gray-900 p-2 mb-5 mt-5 bg-slate-100 border ml-20 rounded-lg shadow-md ${
           editableMemeId === meme.id ? "border-gray-200" : ""
         }`}
@@ -66,7 +66,7 @@ const Mymeme = ({ userId, myMemes, handleDeleteMemes, handleAddMemes, handleEdit
         ) : null}
       </div>
     ))
-  : null;
+  : <p className="text-gray-900 font-bold mt-10 ml-20 text-xl">You don't have any memes. Fill the form and create your own!</p>;
 
   return (
     <div className="grid grid-cols-2">
