@@ -27,7 +27,7 @@ function App() {
     const form = e.target;
     const formData = new FormData(form);
   
-    fetch('http://127.0.0.1:9292/login', {
+    fetch('https://dad-jokes-8fzp.onrender.com/login', {
       method: 'POST',
       body: formData,
     }) 
@@ -53,7 +53,7 @@ function App() {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    fetch('http://localhost:9292/logout', {
+    fetch('https://dad-jokes-8fzp.onrender.com/logout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ function App() {
 
 // fetch all memes
 useEffect(() => {
-  fetch("http://localhost:9292/memes")
+  fetch("https://dad-jokes-8fzp.onrender.com/memes")
     .then((r) => r.json())
     .then((response) => setMemes(response.memes));
 }, []);
@@ -82,7 +82,7 @@ useEffect(() => {
 
 //  fetch memes of authenticated user
 useEffect(() => {
-  fetch(`http://localhost:9292/my_memes/${userId}`)
+  fetch(`https://dad-jokes-8fzp.onrender.com/my_memes/${userId}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -117,7 +117,7 @@ const renderMymemes = () => {
 
 // edit meme
 const handleEditMeme = (id, updatedMeme) => {
-  fetch(`http://localhost:9292/users/${userId}/memes/${id}`, {
+  fetch(`https://dad-jokes-8fzp.onrender.com/users/${userId}/memes/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'

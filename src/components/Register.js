@@ -13,7 +13,7 @@ const Register = ({setIsAuthenticated}) => {
         const formData = new FormData(form);
       
         try {
-          const response = await fetch('http://127.0.0.1:9292/users', {
+          const response = await fetch('https://dad-jokes-8fzp.onrender.com/users', {
             method: 'POST',
             body: formData,
           });

@@ -3,7 +3,7 @@ import deleteicon from "../images/icon-delete.svg"
 const Delete = ({ userId, id, handleDeleteMemes}) => {
 
 function handleDeleteClick() {
-    fetch(`http://localhost:9292/memes/${id}/users/${userId}`, {
+    fetch(`https://dad-jokes-8fzp.onrender.com/memes/${id}/users/${userId}`, {
       method: "DELETE",
     });
     console.log("delete called")
