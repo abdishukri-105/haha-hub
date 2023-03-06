@@ -20,7 +20,7 @@ const Register = ({setIsAuthenticated}) => {
       
           if (response.ok) {
             setIsAuthenticated(true);
-            navigate('/login');
+            navigate('/allmemes');
           } else {
             const errorData = await response.json();
             console.log(errorData);
