@@ -10,6 +10,10 @@ Haha Hub is a web application built with React that allows you to create jokes u
 - delete your jokes
 - update your jokes
 
+ # Links
+  - [backend repository](https://github.com/abdishukri-105/meme-generator)
+ 
+
 # installation and Usage
 To run the application locally, you need to have Node.js and npm installed on your machine. You also need to have the Meme Generator API backend running on http://localhost:3000.
 
